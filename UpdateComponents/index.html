@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Cite - The Drug Ontology</title>
+  <title>Updateing DrOn components - The Drug Ontology</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../css/theme.css" />
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Cite";
-    var mkdocs_page_input_path = "cite.md";
+    var mkdocs_page_name = "Updateing DrOn components";
+    var mkdocs_page_input_path = "UpdateComponents.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -48,20 +48,16 @@
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
                 <p class="caption"><span class="caption-text">Basics</span></p>
-                <ul class="current">
+                <ul>
                     <li class="toctree-l1"><a class="reference internal" href="..">Overview</a>
                     </li>
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Cite</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#building-a-drug-ontology-based-on-rxnorm-and-other-sources">Building a drug ontology based on RxNorm and other sources</a>
-    </li>
-    </ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../cite/">Cite</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../history/">History</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Editors Guide</span></p>
-                <ul>
+                <ul class="current">
                     <li class="toctree-l1"><a class="reference internal" href="#">Standard ODK workflows</a>
     <ul>
                 <li class="toctree-l2"><a class="reference internal" href="../odk-workflows/">Overview</a>
@@ -86,11 +82,13 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../contributing/">Contributing</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="#">Dron specific docs</a>
-    <ul>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="#">Dron specific docs</a>
+    <ul class="current">
                 <li class="toctree-l2"><a class="reference internal" href="../DronReleaseWorkflow/">DrOn Release Workflow</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../UpdateComponents/">Updateing DrOn components</a>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">Updateing DrOn components</a>
+    <ul class="current">
+    </ul>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../MigrationNotes/">Notes on the 2021 Migration to ODK</a>
                 </li>
@@ -118,11 +116,15 @@
     
       
         
-          <li>Basics &raquo;</li>
+          <li>Dron specific docs &raquo;</li>
+        
+      
+        
+          <li>Editors Guide &raquo;</li>
         
       
     
-    <li>Cite</li>
+    <li>Updateing DrOn components</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -133,11 +135,25 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="how-to-cite-dron">How to cite DRON</h1>
-<h3 id="building-a-drug-ontology-based-on-rxnorm-and-other-sources">Building a drug ontology based on RxNorm and other sources</h3>
-<p>https://jbiomedsem.biomedcentral.com/articles/10.1186/2041-1480-4-44</p>
-<pre><code>Hanna J, Joseph E, Brochhausen M, Hogan WR. Building a drug ontology based on RxNorm and other sources. J Biomed Semantics. 2013;4(1):44. Published 2013 Dec 18. doi:10.1186/2041-1480-4-44
-</code></pre>
+                <h1 id="update-components">Update Components</h1>
+<p>DrOn has three large external components:</p>
+<ol>
+<li>dron-rxnorm</li>
+<li>dron-ndc</li>
+<li>dron-ingredient</li>
+</ol>
+<p>Due to their size, they are not in GitHub version control. </p>
+<p>The process of preparing a release works as follows:</p>
+<ol>
+<li>Build the components using the DrOn builder application (as of 2021, done by Matt McConnell).</li>
+<li>Upload the components to their s3 bucket. <em>Important: After the upload, all three components must be available from the following locations</em>:<ul>
+<li>https://drugontology.s3.amazonaws.com/dron-ingredient.owl</li>
+<li>https://drugontology.s3.amazonaws.com/dron-ndc.owl</li>
+<li>https://drugontology.s3.amazonaws.com/dron-rxnorm.owl</li>
+</ul>
+</li>
+<li>(If the location has to change, make sure that update the <code>DRON_RELEASE_LOCATION</code> variable in <code>src/ontology/dron.Makefile</code> before running an ODK release.)</li>
+</ol>
               
             </div>
           </div>
@@ -145,10 +161,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../history/" class="btn btn-neutral float-right" title="History">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../MigrationNotes/" class="btn btn-neutral float-right" title="Notes on the 2021 Migration to ODK">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href=".." class="btn btn-neutral" title="Overview"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../DronReleaseWorkflow/" class="btn btn-neutral" title="DrOn Release Workflow"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -174,10 +190,10 @@
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href=".." style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../DronReleaseWorkflow/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../history/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../MigrationNotes/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

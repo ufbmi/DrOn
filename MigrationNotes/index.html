@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>ODK Migration March 2021 - The Drug Ontology</title>
+  <title>Notes on the 2021 Migration to ODK - The Drug Ontology</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../css/theme.css" />
@@ -18,7 +18,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "ODK Migration March 2021";
+    var mkdocs_page_name = "Notes on the 2021 Migration to ODK";
     var mkdocs_page_input_path = "MigrationNotes.md";
     var mkdocs_page_url = null;
   </script>
@@ -57,9 +57,11 @@
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Editors Guide</span></p>
-                <ul>
+                <ul class="current">
                     <li class="toctree-l1"><a class="reference internal" href="#">Standard ODK workflows</a>
     <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../odk-workflows/">Overview</a>
+                </li>
                 <li class="toctree-l2"><a class="reference internal" href="../odk-workflows/EditorsWorkflow/">Editors Workflow</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../odk-workflows/ReleaseWorkflow/">Release Workflow</a>
@@ -72,9 +74,37 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../odk-workflows/ManageDocumentation/">Managing the documentation</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../odk-workflows/ContinuousIntegration/">Continuous Integration</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../odk-workflows/RepositoryFileStructure/">Your ODK Repository Overview</a>
+                </li>
     </ul>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../contributing/">Contributing</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="#">Dron specific docs</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../DronReleaseWorkflow/">DrOn Release Workflow</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../UpdateComponents/">Updateing DrOn components</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">Notes on the 2021 Migration to ODK</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#merge-upper-and-hand-into-a-single-file">Merge upper and hand into a single file</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#comparing-the-new-odk-based-dronowl-with-the-old-dronowl">Comparing the new ODK-based dron.owl with the old dron.owl</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#migration-checklist-for-the-dron-team">Migration checklist for the DrOn team</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#instructions-for-shallow-review">Instructions for shallow review</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#instructions-for-in-depth-review">Instructions for in-depth review</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+    </ul>
                     </li>
                 </ul>
       </div>
@@ -97,8 +127,16 @@
     <li><a href="..">Docs</a> &raquo;</li>
     
       
+        
+          <li>Dron specific docs &raquo;</li>
+        
+      
+        
+          <li>Editors Guide &raquo;</li>
+        
+      
     
-    <li>ODK Migration March 2021</li>
+    <li>Notes on the 2021 Migration to ODK</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -163,6 +201,13 @@
           </div>
           <footer>
   
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../UpdateComponents/" class="btn btn-neutral" title="Updateing DrOn components"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
 
   <hr/>
 
@@ -184,6 +229,8 @@
   <div class="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
+      
+        <span><a href="../UpdateComponents/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
     </span>

@@ -60,6 +60,8 @@
                 <ul class="current">
                     <li class="toctree-l1 current"><a class="reference internal current" href="#">Standard ODK workflows</a>
     <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../">Overview</a>
+                </li>
                 <li class="toctree-l2 current"><a class="reference internal current" href="./">Editors Workflow</a>
     <ul class="current">
     <li class="toctree-l3"><a class="reference internal" href="#local-editing-workflow">Local editing workflow</a>
@@ -102,9 +104,23 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../ManageDocumentation/">Managing the documentation</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../ContinuousIntegration/">Continuous Integration</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../RepositoryFileStructure/">Your ODK Repository Overview</a>
+                </li>
     </ul>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../contributing/">Contributing</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Dron specific docs</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../DronReleaseWorkflow/">DrOn Release Workflow</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../UpdateComponents/">Updateing DrOn components</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../MigrationNotes/">Notes on the 2021 Migration to ODK</a>
+                </li>
+    </ul>
                     </li>
                 </ul>
       </div>
@@ -148,7 +164,7 @@
             <div class="section">
               
                 <h1 id="editors-workflow">Editors Workflow</h1>
-<p>The editors workflow is one of the formal <a href="Workflow.md">workflows</a> to ensure that the ontology is developed correctly according to ontology engineering principles. There are a few different editors workflows:</p>
+<p>The editors workflow is one of the formal <a href="../">workflows</a> to ensure that the ontology is developed correctly according to ontology engineering principles. There are a few different editors workflows:</p>
 <ol>
 <li>Local editing workflow: Editing the ontology in your local environment by hand, using tools such as Protégé, ROBOT templates or DOSDP patterns.</li>
 <li>Completely automated data pipeline (GitHub Actions)</li>
@@ -178,21 +194,27 @@ git pull
 </code></pre>
 <h4 id="4-perform-edit">4. <em>Perform edit</em></h4>
 <p>Using your editor of choice, perform the intended edit. For example:</p>
-<p><em>Protege</em>
-1. Open <code>src/ontology/dron-edit.owl</code> in Protege
-2. Make the change
-3. Save the file</p>
-<p><em>TextEdit</em>
-1. Open <code>src/ontology/dron-edit.owl</code> in TextEdit (or Sublime, Atom, Vim, Nano)
-2. Make the change
-3. Save the file</p>
+<p><em>Protege</em></p>
+<ol>
+<li>Open <code>src/ontology/dron-edit.owl</code> in Protege</li>
+<li>Make the change</li>
+<li>Save the file</li>
+</ol>
+<p><em>TextEdit</em></p>
+<ol>
+<li>Open <code>src/ontology/dron-edit.owl</code> in TextEdit (or Sublime, Atom, Vim, Nano)</li>
+<li>Make the change</li>
+<li>Save the file</li>
+</ol>
 <p>Consider the following when making the edit.</p>
 <ol>
-<li>According to our development philosophy, the only places that should be manually edited are:</li>
+<li>According to our development philosophy, the only places that should be manually edited are:<ul>
 <li><code>src/ontology/dron-edit.owl</code></li>
 <li>Any ROBOT templates you chose to use (the TSV files only)</li>
 <li>Any DOSDP data tables you chose to use (the TSV files, and potentially the associated patterns)</li>
 <li>components (anything in <code>src/ontology/components</code>), see <a href="../RepositoryFileStructure/">here</a>.</li>
+</ul>
+</li>
 <li>Imports should not be edited (any edits will be flushed out with the next update). However, refreshing imports is a potentially breaking change - and is discussed <a href="../UpdateImports/">elsewhere</a>.</li>
 <li>Changes should usually be small. Adding or changing 1 term is great. Adding or changing 10 related terms is ok. Adding or changing 100 or more terms at once should be considered very carefully.</li>
 </ol>
@@ -226,7 +248,7 @@ git push -u origin issue23removeprocess
 <p>If you didn't run and local quality control checks (see <a href="#Local-testing">5a</a>), you should have Continuous Integration (CI) set up, for example:
 - Travis
 - GitHub Actions</p>
-<p>More on how to set this up <a href="ContinuousIntegration.md">here</a>. Once the pull request is created, the CI will automatically trigger. If all is fine, it will show up green, otherwise red.</p>
+<p>More on how to set this up <a href="../ContinuousIntegration/">here</a>. Once the pull request is created, the CI will automatically trigger. If all is fine, it will show up green, otherwise red.</p>
 <h4 id="8-community-review">8. Community review</h4>
 <p>Once all the automatic tests have passed, it is important to put a second set of eyes on the pull request. Ontologies are inherently social - as in that they represent some kind of community consensus on how a domain is organised conceptually. This seems high brow talk, but it is very important that as an ontology editor, you have your work validated by the community you are trying to serve (e.g. your colleagues, other contributors etc). In our experience, it is hard to get more than one review on a pull request - two is great. You can set up GitHub branch protection to actually require a review before a pull request can be merged! We recommend this.</p>
 <p>This step seems daunting to some hopefully under-resourced ontologies, but we recommend to put this high up on your list of priorities - train a colleague, reach out!</p>
@@ -244,7 +266,7 @@ git push -u origin issue23removeprocess
         <a href="../ReleaseWorkflow/" class="btn btn-neutral float-right" title="Release Workflow">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../../history/" class="btn btn-neutral" title="History"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../" class="btn btn-neutral" title="Overview"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -270,7 +292,7 @@ git push -u origin issue23removeprocess
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../../history/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
         <span style="margin-left: 15px"><a href="../ReleaseWorkflow/" style="color: #fcfcfc">Next &raquo;</a></span>

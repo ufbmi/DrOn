@@ -60,6 +60,8 @@
                 <ul class="current">
                     <li class="toctree-l1 current"><a class="reference internal current" href="#">Standard ODK workflows</a>
     <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../">Overview</a>
+                </li>
                 <li class="toctree-l2"><a class="reference internal" href="../EditorsWorkflow/">Editors Workflow</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../ReleaseWorkflow/">Release Workflow</a>
@@ -82,9 +84,23 @@
     </li>
     </ul>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../ContinuousIntegration/">Continuous Integration</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../RepositoryFileStructure/">Your ODK Repository Overview</a>
+                </li>
     </ul>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../contributing/">Contributing</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Dron specific docs</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../DronReleaseWorkflow/">DrOn Release Workflow</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../UpdateComponents/">Updateing DrOn components</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../MigrationNotes/">Notes on the 2021 Migration to ODK</a>
+                </li>
+    </ul>
                     </li>
                 </ul>
       </div>
@@ -128,9 +144,11 @@
             <div class="section">
               
                 <h1 id="updating-the-documentation">Updating the Documentation</h1>
-<p>The documentation for DRON is managed in two places (relative to the repository root):
-1. The <code>docs</code> directory contains all the files that pertain to the content of the documentation (more below)
-2. the <code>mkdocs.yaml</code> file cotains the documentation config, in particular its navigation bar and theme.</p>
+<p>The documentation for DRON is managed in two places (relative to the repository root):</p>
+<ol>
+<li>The <code>docs</code> directory contains all the files that pertain to the content of the documentation (more below)</li>
+<li>the <code>mkdocs.yaml</code> file cotains the documentation config, in particular its navigation bar and theme.</li>
+</ol>
 <p>The documentation is hosted using github pages, on a special branch of the repository (called <code>gh-pages</code>). It is important that this branch is never deleted - it contains all the files GitHub pages needs to render and deploy the site. It is also important to note that <em>the gh-pages branch should never be edited manually</em>. All changes to the docs happen inside the <code>docs</code> directory on the <code>main</code> branch.</p>
 <h2 id="editing-the-docs">Editing the docs</h2>
 <h3 id="changing-content">Changing content</h3>
@@ -145,24 +163,21 @@
 <h2 id="deploy-the-documentation">Deploy the documentation</h2>
 <p>The documentation is <em>not</em> automatically updated from the Markdown, and needs to be deployed deliberately. To do this, perform the following steps:</p>
 <ol>
-<li>In your terminal, navigate to the edit directory of your ontology, e.g.:</li>
-</ol>
-<pre><code>cd dron/src/ontology
-</code></pre>
-<ol>
-<li>Now you are ready to build the docs as follows:</li>
-</ol>
-<pre><code>sh run.sh make update_docs
-</code></pre>
-<p><a href="https://www.mkdocs.org/">Mkdocs</a> now sets off to build the site from the markdown pages. You will be asked to </p>
-<ol>
+<li>In your terminal, navigate to the edit directory of your ontology, e.g.:
+   <code>cd dron/src/ontology</code></li>
+<li>Now you are ready to build the docs as follows:
+   <code>sh run.sh make update_docs</code>
+   <a href="https://www.mkdocs.org/">Mkdocs</a> now sets off to build the site from the markdown pages. You will be asked to<ul>
 <li>Enter your username</li>
-<li>Enter your password (see <a href="https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token">here</a> for using GitHub access tokens instead)</li>
+<li>Enter your password (see <a href="https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token">here</a> for using GitHub access tokens instead)
+  <em>IMPORTANT</em>: Using password based authentication will be deprecated this year (2021). Make sure you read up on <a href="https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token">personal access tokens</a> if that happens!</li>
+</ul>
+</li>
 </ol>
-<p><em>IMPORTANT</em>: Using password based authentication will be deprecated this year (2021). Make sure you read up on <a href="https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token">personal access tokens</a> if that happens!</p>
 <p>If everything was successful, you will see a message similar to this one:</p>
-<pre><code>INFO    -  Your documentation should shortly be available at: https://uamsdbmi.github.io/dron/ 
-</code></pre>
+<p><code>INFO    -  Your documentation should shortly be available at: https://uamsdbmi.github.io/dron/</code>
+3. Just to double check, you can now navigate to your documentation pages (usually https://uamsdbmi.github.io/dron/). 
+   Just make sure you give GitHub 2-5 minutes to build the pages!</p>
               
             </div>
           </div>
@@ -170,7 +185,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../../contributing/" class="btn btn-neutral float-right" title="Contributing">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../ContinuousIntegration/" class="btn btn-neutral float-right" title="Continuous Integration">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../UpdateImports/" class="btn btn-neutral" title="Imports management"><span class="icon icon-circle-arrow-left"></span> Previous</a>
@@ -202,7 +217,7 @@
         <span><a href="../UpdateImports/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../../contributing/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../ContinuousIntegration/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

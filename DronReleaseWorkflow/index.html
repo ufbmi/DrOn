@@ -86,15 +86,19 @@
     <ul class="current">
                 <li class="toctree-l2 current"><a class="reference internal current" href="./">DrOn Release Workflow</a>
     <ul class="current">
-    <li class="toctree-l3"><a class="reference internal" href="#1-update-the-external-components">1. Update the external components</a>
+    <li class="toctree-l3"><a class="reference internal" href="#update-the-external-components">Update the external components</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#import-the-external-components">Import the external components</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#34-build-the-release-files-and-create-a-github-release">3+4. Build the release files and create a GitHub release</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#experimental-workflow-using-github-client-api-gh">Experimental workflow using GitHub client API (gh)</a>
+    </li>
+        </ul>
     </li>
     </ul>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../UpdateComponents/">Updateing DrOn components</a>
+                <li class="toctree-l2"><a class="" href="../UpdateComponents.md">Updateing DrOn components</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../MigrationNotes/">Notes on the 2021 Migration to ODK</a>
                 </li>
@@ -144,12 +148,12 @@
                 <h1 id="dron-release-workflow">Dron Release Workflow</h1>
 <p>To create a new Dron release:</p>
 <ol>
-<li><a href="../UpdateComponents/">Update the external components</a></li>
-<li>Import the external components</li>
-<li>Build the release files</li>
-<li>Create a GitHub release</li>
+<li><a href="#Update-the-external-components">Update the external components</a></li>
+<li><a href="#Import-the-external-components">Import the external components</a></li>
+<li><a href="#Build-the-release-files-and-create-a-GitHub-release">Build the release files</a></li>
+<li><a href="#Build-the-release-files-and-create-a-GitHub-release">Create a GitHub release</a></li>
 </ol>
-<h2 id="1-update-the-external-components">1. Update the external components</h2>
+<h2 id="update-the-external-components">Update the external components</h2>
 <p>DrOn has three large external components:</p>
 <ol>
 <li>dron-rxnorm</li>
@@ -184,7 +188,7 @@
 <p>This command will now download dron-ingredient.owl, dron-ndc.owl, dron-rxnorm.owl to your local machine (and overwrite any old versions of these three files), so that the ODK will recognise them as part of the upcoming release.</p>
 <h2 id="34-build-the-release-files-and-create-a-github-release">3+4. Build the release files and create a GitHub release</h2>
 <p>Follow the <a href="../odk-workflows/ReleaseWorkflow/">default ODK release instructions</a>.</p>
-<h1 id="experimental-workflow-using-github-client-api-gh">Experimental workflow using GitHub client API (<code>gh</code>)</h1>
+<h3 id="experimental-workflow-using-github-client-api-gh">Experimental workflow using GitHub client API (<code>gh</code>)</h3>
 <ul>
 <li>Install the GitHub release client API: https://github.com/cli/cli#installation. Note, this is a highly experimental process that requires a bit of pioneers spirit. When we did it on 7th April 2021, we performed the following steps on a Ubuntu machine (see <a href="https://github.com/cli/cli#installation">here</a> for instructions on other systems):</li>
 </ul>
@@ -212,7 +216,7 @@ This is not necessarily today - its the date you ran the ODK release pipeline. I
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../UpdateComponents/" class="btn btn-neutral float-right" title="Updateing DrOn components">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../MigrationNotes/" class="btn btn-neutral float-right" title="Notes on the 2021 Migration to ODK">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../contributing/" class="btn btn-neutral" title="Contributing"><span class="icon icon-circle-arrow-left"></span> Previous</a>
@@ -244,7 +248,7 @@ This is not necessarily today - its the date you ran the ODK release pipeline. I
         <span><a href="../contributing/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../UpdateComponents/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../MigrationNotes/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

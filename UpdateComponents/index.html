@@ -70,6 +70,8 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../odk-workflows/UpdateImports/">Imports management</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../odk-workflows/ManageDocumentation/">Managing the documentation</a>
+                </li>
     </ul>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../contributing/">Contributing</a>
@@ -108,14 +110,20 @@
             <div class="section">
               
                 <h1 id="update-components">Update Components</h1>
-<p>Dron has three large external components:</p>
+<p>DrOn has three large external components:</p>
 <ol>
 <li>dron-rxnorm</li>
 <li>dron-ndc</li>
 <li>dron-ingredient</li>
 </ol>
-<p>Due to their size, they are not in git version control. </p>
-<h2 id="use-the-latest-release">Use the latest release</h2>
+<p>Due to their size, they are not in GitHub version control. </p>
+<p>The process of preparing a release works as follows:
+1. Build the components using the DrOn builder application (as of 2021, done by Matt McConnell).
+2. Upload the components to their s3 bucket. <em>Important: After the upload, all three components must be available from the following locations</em>:
+   - https://drugontology.s3.amazonaws.com/dron-ingredient.owl
+   - https://drugontology.s3.amazonaws.com/dron-ndc.owl
+   - https://drugontology.s3.amazonaws.com/dron-rxnorm.owl
+3. (If the location has to change, make sure that update the <code>DRON_RELEASE_LOCATION</code> variable in <code>src/ontology/dron.Makefile</code> before running an ODK release.)</p>
               
             </div>
           </div>

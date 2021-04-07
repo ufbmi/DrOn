@@ -80,6 +80,8 @@
     </li>
     </ul>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../ManageDocumentation/">Managing the documentation</a>
+                </li>
     </ul>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../contributing/">Contributing</a>
@@ -147,7 +149,7 @@
 <li>Paste the <em>full iri</em> in the 'Name:' field, for example, http://purl.obolibrary.org/obo/CHEBI_50906.</li>
 <li>Click 'OK'</li>
 </ol>
-<p>[[img/AddingClasses.png]]</p>
+<p><img src="https://raw.githubusercontent.com/INCATools/ontology-development-kit/master/docs/img/AddingClasses.png" alt="Adding Classes" /></p>
 <p>Now you can use this term for example to construct logical definitions. The next time the imports are refreshed (see how to refresh <a href="#Refresh-imports">here</a>), the metadata (labels, definitions, etc) for this term are imported from the respective external source ontology and becomes visible in your ontology.</p>
 <h4 id="using-term-files">Using term files</h4>
 <p>Every import has, by default a term file associated with it, which can be found in the imports directory. For example, if you have a GO import in <code>src/ontology/go_import.owl</code>, you will also have an associated term file <code>src/ontology/go_terms.txt</code>. You can add terms in there simply as a list:</p>
@@ -159,7 +161,7 @@ GO:0008151
 <p>This workflow is appropriate if:
 1. You prefer to manage all your imported terms in a single file (rather than multiple files like in the "Using term files" workflow above).
 2. You wish to augment your imported ontologies with additional information. This requires a cautionary discussion.</p>
-<p>To enable this workflow, you add the following to your ODK config file (<code>src/ontology/myont-odk.yaml</code>), and <a href="../RepoManagement/">update the repository</a>:</p>
+<p>To enable this workflow, you add the following to your ODK config file (<code>src/ontology/dron-odk.yaml</code>), and <a href="../RepoManagement/">update the repository</a>:</p>
 <pre><code>use_custom_import_module: TRUE
 </code></pre>
 <p>Now you can manage your imported terms directly in the custom external terms template, which is located at <code>src/templates/external_import.owl</code>. Note that this file is a <a href="http://robot.obolibrary.org/template">ROBOT template</a>, and can, in principle, be extended to include any axioms you like. Before extending the template, however, read the following carefully.</p>
@@ -196,7 +198,7 @@ APOLLO_SV:00000532  owl:Class
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../../contributing/" class="btn btn-neutral float-right" title="Contributing">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../ManageDocumentation/" class="btn btn-neutral float-right" title="Managing the documentation">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../SettingUpDockerForODK/" class="btn btn-neutral" title="Setting up Docker for ODK"><span class="icon icon-circle-arrow-left"></span> Previous</a>
@@ -228,7 +230,7 @@ APOLLO_SV:00000532  owl:Class
         <span><a href="../SettingUpDockerForODK/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../../contributing/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../ManageDocumentation/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Repository structure - The Drug Ontology</title>
+  <title>Managing the documentation - The Drug Ontology</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../css/theme.css" />
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Repository structure";
-    var mkdocs_page_input_path = "odk-workflows/RepositoryFileStructure.md";
+    var mkdocs_page_name = "Managing the documentation";
+    var mkdocs_page_input_path = "odk-workflows/ManageDocumentation.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -57,9 +57,9 @@
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Editors Guide</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="#">Standard ODK workflows</a>
-    <ul>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="#">Standard ODK workflows</a>
+    <ul class="current">
                 <li class="toctree-l2"><a class="reference internal" href="../EditorsWorkflow/">Editors Workflow</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../ReleaseWorkflow/">Release Workflow</a>
@@ -70,7 +70,17 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../UpdateImports/">Imports management</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../ManageDocumentation/">Managing the documentation</a>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">Managing the documentation</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#editing-the-docs">Editing the docs</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#changing-content">Changing content</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#deploy-the-documentation">Deploy the documentation</a>
+    </li>
+    </ul>
                 </li>
     </ul>
                     </li>
@@ -97,8 +107,16 @@
     <li><a href="../..">Docs</a> &raquo;</li>
     
       
+        
+          <li>Standard ODK workflows &raquo;</li>
+        
+      
+        
+          <li>Editors Guide &raquo;</li>
+        
+      
     
-    <li>Repository structure</li>
+    <li>Managing the documentation</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -109,104 +127,47 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="repository-structure">Repository structure</h1>
-<p>The main kinds of files in the repository:
-1. Release files
-2. Imports
-3. <a href="#Components">Components</a></p>
-<h2 id="release-files">Release files</h2>
-<p>Release file are the file that are considered part of the official ontology release and to be used by the community. A detailed descripts of the release artefacts can be found <a href="https://github.com/INCATools/ontology-development-kit/blob/master/docs/ReleaseArtefacts.md">here</a>.</p>
-<h2 id="imports">Imports</h2>
-<p>Imports are subsets of external ontologies that contain terms and axioms you would like to re-use in your ontology. These are considered "external", like dependencies in software development, and are not included in your "base" product, which is the <a href="https://github.com/INCATools/ontology-development-kit/blob/master/docs/ReleaseArtefacts.md">release artefact</a> which contains only those axioms that you personally maintain.</p>
-<p>These are the current imports in DRON</p>
-<table>
-<thead>
-<tr>
-<th>Import</th>
-<th>URL</th>
-<th>Type</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ro</td>
-<td>http://purl.obolibrary.org/obo/ro.owl</td>
-<td>slme</td>
-</tr>
-<tr>
-<td>apollo_sv</td>
-<td>http://purl.obolibrary.org/obo/apollo_sv.owl</td>
-<td>None</td>
-</tr>
-<tr>
-<td>go</td>
-<td>http://purl.obolibrary.org/obo/go.owl</td>
-<td>None</td>
-</tr>
-<tr>
-<td>obi</td>
-<td>http://purl.obolibrary.org/obo/obi.owl</td>
-<td>None</td>
-</tr>
-<tr>
-<td>ogms</td>
-<td>http://purl.obolibrary.org/obo/ogms.owl</td>
-<td>None</td>
-</tr>
-<tr>
-<td>bfo</td>
-<td>http://purl.obolibrary.org/obo/bfo.owl</td>
-<td>slme</td>
-</tr>
-<tr>
-<td>omo</td>
-<td>http://purl.obolibrary.org/obo/omo.owl</td>
-<td>mirror</td>
-</tr>
-<tr>
-<td>chebi</td>
-<td>http://purl.obolibrary.org/obo/chebi.owl</td>
-<td>filter</td>
-</tr>
-<tr>
-<td>pr</td>
-<td>http://purl.obolibrary.org/obo/pr.owl</td>
-<td>filter</td>
-</tr>
-</tbody>
-</table>
-<h2 id="components">Components</h2>
-<p>Components, in contrast to imports, are considered full members of the ontology. This means that any axiom in a component is also included in the ontology base - which means it is considered <em>native</em> to the ontology. While this sounds complicated, consider this: conceptually, no component should be part of more than one ontology. If that seems to be the case, we are most likely talking about an import. Components are often not needed for ontologies, but there are some use cases:
-1. There is an automated process that generates and re-generates a part of the ontology
-2. A part of the ontology is managed in ROBOT templates
-3. The expressivity of the component is higher than the format of the edit file. For example, people still choose to manage their ontology in OBO format (they should not) missing out on a lot of owl features. They may chose to manage logic that is beyond OBO in a specific OWL component.</p>
-<p>These are the components in DRON</p>
-<table>
-<thead>
-<tr>
-<th>Filename</th>
-<th>URL</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>dron-ingredient.owl</td>
-<td>None</td>
-</tr>
-<tr>
-<td>dron-ndc.owl</td>
-<td>None</td>
-</tr>
-<tr>
-<td>dron-rxnorm.owl</td>
-<td>None</td>
-</tr>
-</tbody>
-</table>
+                <h1 id="updating-the-documentation">Updating the Documentation</h1>
+<p>The documentation for DRON is managed in two places (relative to the repository root):
+1. The <code>docs</code> directory contains all the files that pertain to the content of the documentation (more below)
+2. the <code>mkdocs.yaml</code> file cotains the documentation config, in particular its navigation bar and theme.</p>
+<p>The documentation is hosted using github pages, on a special branch of the repository (called <code>gh-pages</code>). It is important that this branch is never deleted - it contains all the files GitHub pages needs to render and deploy the site. It is also important to note that <em>the gh-pages branch should never be edited manually</em>. All changes to the docs happen inside the <code>docs</code> directory on the <code>main</code> branch.</p>
+<h2 id="editing-the-docs">Editing the docs</h2>
+<h3 id="changing-content">Changing content</h3>
+<p>All the documentation is contained in the <code>docs</code> directory, and is managed in <em>Markdown</em>. Markdown is a very simple and convenient way to produce text documents with formatting instructions, and is very easy to learn - it is also used, for example, in GitHub issues. This is a normal editing workflow:</p>
+<ol>
+<li>Open the <code>.md</code> file you want to change in an editor of choice (a simple text editor is often best). <em>IMPORTANT</em>: Do not edit any files in the <code>docs/odk-workflows/</code> directory. These files are managed by the ODK system and will be overwritten when the repository is upgraded! If you wish to change these files, make an issue on the <a href="https://github.com/INCATools/ontology-development-kit/issues">ODK issue tracker</a>.</li>
+<li>Perform the edit and save the file</li>
+<li>Commit the file to a branch, and create a pull request as usual. </li>
+<li>If your development team likes your changes, merge the docs into master.</li>
+<li>Deploy the documentation (see below)</li>
+</ol>
+<h2 id="deploy-the-documentation">Deploy the documentation</h2>
+<p>The documentation is <em>not</em> automatically updated from the Markdown, and needs to be deployed deliberately. To do this, perform the following steps:</p>
+<ol>
+<li>In your terminal, navigate to the edit directory of your ontology, e.g.:</li>
+</ol>
+<pre><code>cd dron/src/ontology
+</code></pre>
+<ol>
+<li>Now you are ready to build the docs as follows:</li>
+</ol>
+<pre><code>sh run.sh make update_docs
+</code></pre>
+<p>In the upcoming dialogues, you will be asked </p>
               
             </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../contributing/" class="btn btn-neutral float-right" title="Contributing">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../UpdateImports/" class="btn btn-neutral" title="Imports management"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
@@ -230,6 +191,10 @@
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
+        <span><a href="../UpdateImports/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../../contributing/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

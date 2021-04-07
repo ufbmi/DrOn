@@ -70,6 +70,8 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../odk-workflows/UpdateImports/">Imports management</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../odk-workflows/ManageDocumentation/">Managing the documentation</a>
+                </li>
     </ul>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../contributing/">Contributing</a>
@@ -111,12 +113,62 @@
 <p>To create a new Dron release:</p>
 <ol>
 <li><a href="../UpdateComponents/">Update the external components</a></li>
+<li>Import the external components</li>
 <li>Build the release files</li>
 <li>Create a GitHub release</li>
 </ol>
-<h2 id="update-the-external-components">Update the external components</h2>
-<p>The Dron Builder code is currently still bundled in a Scala module managed by Matt McConnell. 
-Please refer to the detailed documentation for <a href="../UpdateComponents/">updating the external components</a>.</p>
+<h2 id="1-update-the-external-components">1. Update the external components</h2>
+<p>DrOn has three large external components:</p>
+<ol>
+<li>dron-rxnorm</li>
+<li>dron-ndc</li>
+<li>dron-ingredient</li>
+</ol>
+<p>Due to their size, they are not in GitHub version control. </p>
+<p>The process of preparing a release works as follows:
+1. Build the components using the DrOn builder application (as of 2021, done by Matt McConnell).
+2. Upload the components to their s3 bucket. <em>Important: After the upload, all three components must be available from the following locations</em>:
+   - https://drugontology.s3.amazonaws.com/dron-ingredient.owl
+   - https://drugontology.s3.amazonaws.com/dron-ndc.owl
+   - https://drugontology.s3.amazonaws.com/dron-rxnorm.owl
+3. (If the location has to change, make sure that update the <code>DRON_RELEASE_LOCATION</code> variable in <code>src/ontology/dron.Makefile</code> before running an ODK release.)</p>
+<p>The Dron Builder code is currently still bundled in a Scala module managed by Matt McConnell. </p>
+<h2 id="import-the-external-components">Import the external components</h2>
+<p>Before running the normal ODK release workflow, the release manager (as of 2021, Bill Hogan) has to download the components into their local DrOn repo. This is achieved as follows:</p>
+<ol>
+<li>In your Terminal, go to your DrOn edit directory, for example:</li>
+</ol>
+<pre><code>cd dron/src/ontology
+</code></pre>
+<ol>
+<li>To download the external components previously uploaded to their s3 bucket: </li>
+</ol>
+<pre><code>sh run.sh make download_components
+</code></pre>
+<p>This command will now download dron-ingredient.owl, dron-ndc.owl, dron-rxnorm.owl to your local machine (and overwrite any old versions of these three files), so that the ODK will recognise them as part of the upcoming release.</p>
+<h2 id="34-build-the-release-files-and-create-a-github-release">3+4. Build the release files and create a GitHub release</h2>
+<p>Follow the <a href="../odk-workflows/ReleaseWorkflow/">default ODK release instructions</a>.</p>
+<h1 id="experimental-workflow-using-github-client-api-gh">Experimental workflow using GitHub client API (<code>gh</code>)</h1>
+<ol>
+<li>Install the GitHub release client API: https://github.com/cli/cli#installation. Note, this is a highly experimental process that requires a bit of pioneers spirit. When we did it on 7th April 2021, we performed the following steps on a Ubuntu machine (see <a href="https://github.com/cli/cli#installation">here</a> for instructions on other systems):</li>
+</ol>
+<pre><code>sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key C99B11DEB97541F0
+sudo apt-add-repository https://cli.github.com/packages
+sudo apt-get install software-properties-common
+sudo apt install gh
+gh --version
+
+OPTIONAL: git config --global user.name &quot;Nico Matentzoglu&quot; (use your own name)
+OPTIONAL: git config --global user.email nicolas.matentzoglu@gmail.com (use your own email, the one that is associated with your GitHub account)
+
+gh auth login
+cd ../../
+</code></pre>
+<ol>
+<li>This assumes you have already run the release, step 3 above.</li>
+<li>Run <code>gh release create v2021-04-02 dron*</code>, but make sure you use the correct date of the release (
+This is not necessarily today - its the date you ran the ODK release pipeline. It can be seen form example in the Version IRI of dron-base.owl, or dron.owl. This will navigate you through a dialog, asking for title, and release notes. It is good to be familiar with the <a href="../odk-workflows/ReleaseWorkflow/">default ODK release instructions</a> to understand what to write for each question. In essence, this is an <em>exact</em> command line equivalent of the <a href="../odk-workflows/ReleaseWorkflow/">manual version</a>.</li>
+</ol>
               
             </div>
           </div>

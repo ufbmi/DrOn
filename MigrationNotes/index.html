@@ -150,9 +150,11 @@
                 <h1 id="odk-migration-march-2021">ODK Migration March 2021</h1>
 <p>This document summarises the migration process to regular ODK setup in March 2021. It mainly serves historical purposes, tracing some of the decisions that were made, but also provides guidance on how to manage the migration process on the UFBMI side.</p>
 <p>The original repo of DrOn was on bitbucket: https://bitbucket.org/uamsdbmi/dron</p>
-<p>To make use of the GitHub ecosystem (GitHub actions for CI, GitHub releases), we migrated Dron to GitHub as well. This migration had one major downside: the GitHub maximum file size is 100 MB. This had two consequences:
-1. Large Dron components (dron-ndc, dron-ingredient and dron-rxnorm) could not be checked in directly.
-2. The Dron history could not be migrated, as the file size restriction applies to the git history as well.</p>
+<p>To make use of the GitHub ecosystem (GitHub actions for CI, GitHub releases), we migrated Dron to GitHub as well. This migration had one major downside: the GitHub maximum file size is 100 MB. This had two consequences:</p>
+<ol>
+<li>Large Dron components (dron-ndc, dron-ingredient and dron-rxnorm) could not be checked in directly.</li>
+<li>The Dron history could not be migrated, as the file size restriction applies to the git history as well.</li>
+</ol>
 <p>The remainder of the documents details the other key changes.</p>
 <h2 id="merge-upper-and-hand-into-a-single-file">Merge upper and hand into a single file</h2>
 <p>All the manually edited Dron axioms are now edited in <code>src/ontology/dron-edit.owl</code>. <code>dron-upper.owl</code> and <code>dron-hand.owl</code>, previously managed as separated OWL files, were merged into the new edit file as follows:</p>
@@ -162,10 +164,12 @@
 <h2 id="comparing-the-new-odk-based-dronowl-with-the-old-dronowl">Comparing the new ODK-based dron.owl with the old dron.owl</h2>
 <p>The new DrOn release is a bit different than the old one. In the following we will discuss the differences in detail.</p>
 <ol>
-<li><em>Added imports</em>. Same as in other ontologies, such as OMRSE, we added proper imports to the Relation Ontology RO and BFO. This ensures that DRON modelling is logically consistent with the BFO worldview, which keeps it compatible with other OBO/BFO-based ontologies. This means there are a few changes in and around external axioms, such as:</li>
+<li><em>Added imports</em>. Same as in other ontologies, such as OMRSE, we added proper imports to the Relation Ontology RO and BFO. This ensures that DRON modelling is logically consistent with the BFO worldview, which keeps it compatible with other OBO/BFO-based ontologies. This means there are a few changes in and around external axioms, such as:<ul>
 <li>include BFO/RO axioms</li>
 <li>added/removed CHEBI axioms</li>
 <li>added/removed PRO axioms</li>
+</ul>
+</li>
 <li><em>Inferred subclasses</em>. If you open <code>src/ontology/dron-edit.owl</code> and run the reasoner, you will notice that DrOn has a good number of inferred-only subsumptions. Inferred-only subsumptions are those that the reasoner can deduce from the given axioms, but that are not <em>asserted</em> as a SubClassOf axiom. Example, if you run the reasoner in Protege, you will find that <a href="http://purl.obolibrary.org/obo/DRON_00001110">Ampicillin / cloxacillin suspension</a> is asserted to be a subclass of <code>drug suspension</code>. However, you will also notice that it can be inferred to be a SubClassOf <code>cloxacillin suspension</code>:</li>
 </ol>
 <p>[[img/inferred_subs.png]]</p>
@@ -191,9 +195,11 @@
 <ul>
 <li>Review <a href="https://www.dropbox.com/s/8pt56w13o9dgzu8/release-diff-merged.txt?dl=0">release-to-merge diff (non DrOn (external stuff))</a>. This is a huge diff including axioms that are due to changes in imported ontologies. Of the roughly 99% of these changes are due to the refreshed CHEBI import (80K changes). We believe its worth trying to identify patterns in these changes, like missing properties. Not that this is using the exact same config as OMRSE, so Matt D. should be quite familiar reviewing these.</li>
 <li>Review <a href="https://www.dropbox.com/s/2z7eiv11k0ago11/release-diff-build.txt?dl=0">release-to-build diff (non DrOn (external stuff)</a>. This (equally huge) diff includes all non-DrOn axioms that have changed between the current dron.owl release (from Bitbucket) and the <em>ODK-released</em> version of DrOn. This is 99% redundant with the above release-to-merge diff, so we recommend to disregard it.</li>
-<li>Become aware of issues we noticed during the work:</li>
+<li>Become aware of issues we noticed during the work:<ul>
 <li><a href="https://github.com/matentzn/dron/issues/3">Has-proper-part and has-part usage Dron not compatible with RO</a></li>
 <li><a href="https://github.com/matentzn/dron/issues/1">Dron uses BFO:0000053 which is neither in RO nor BFO</a></li>
+</ul>
+</li>
 <li>Close the unsatisfiable classes <a href="https://github.com/matentzn/dron/issues/2">issue</a>.</li>
 </ul>
               
